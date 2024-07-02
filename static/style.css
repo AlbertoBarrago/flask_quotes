@@ -1,0 +1,44 @@
+:root {
+    --primary-color: #000000;
+    --secondary-color: #c12c2c;
+    --tertiary-color: #4ee11d;
+}
+
+body {
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    font-family: 'Roboto', sans-serif;
+    font-size: 18px;
+    font-weight: 300;
+    text-align: center;
+}
+
+h1 {
+    font-size: 40px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+
+p {
+    font-size: 18px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+}
+
+blockquote {
+    font-size: 20px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    color: var(--tertiary-color)
+}
+
+button {
+    font-size: 18px;
+    font-weight: 300;
+    -webkit-font-smoothing: antialiased;
+    background-color: var(--tertiary-color);
+    color: var(--primary-color);
+    border: none;
+    border-radius: 2px;
+    padding: 10px
+}

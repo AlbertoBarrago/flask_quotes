@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  if title %} <title> {{ title }} </title> {% endif %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    {% if description %}
+     <h1>{{ description}}</h1>
+    {% endif %}
+    {% if isForm %}
+        <p>Press the button for a quotes!</p>
+        <form action="/quotes" method="GET">
+            <button type="submit">I'm feeling lucky</button>
+        </form>
+    {% endif %}
+    {% if error %}
+        <p>Error: {{ error }}</p>
+    {% endif %}
+    {% if quotes %}
+        <blockquote>
+            <p>"{{ quotes.quote }}"</p>
+            <footer>— {{ quotes.author }}</footer>
+        </blockquote>
+         <form action="/quotes" method="GET">
+            <button type="submit">I'm feeling lucky</button>
+        </form>
+    {% endif %}
+</body>
+</html>
