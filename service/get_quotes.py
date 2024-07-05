@@ -1,6 +1,4 @@
 # quote_service.py
-
-from flask import jsonify
 import requests
 
 
@@ -19,3 +17,5 @@ def get_quotes():
         }, None
     except Exception as e:
         return None, str(e)
+
+
