@@ -1,5 +1,5 @@
 from flask import render_template, Blueprint
-from service.get_quotes import get_quotes
+from service.quotes import get_quotes
 
 route_external = Blueprint('route_external', __name__, template_folder='../templates')
 

@@ -5,6 +5,7 @@ import mysql
 from mysql.connector import Error
 from dotenv import load_dotenv
 import os
+
 load_dotenv()
 
 config = {
@@ -15,23 +16,35 @@ config = {
     'raise_on_warnings': True,
 }
 
+create_table_query = """
+CREATE TABLE IF NOT EXISTS quotes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    quote TEXT NOT NULL,
+    author VARCHAR(255),
+    date_added TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+)
+"""
+
 
 def connect_mysql():
-    connection = None
     try:
-        connection = mysql.connector.connect(
-            host=config.get('host'),
-            user=config.get('user'),
-            password=config.get('password'),
-            database=config.get('database'),
-        )
+        connection = mysql.connector.connect(**config)
         if connection.is_connected():
-            return print(f"Connected to MySQL Server version {connection.get_server_info()}")
+            return connection
     except Error as e:
         print(f"Failed to connect | Error: {e}")
-    finally:
-        if connection and connection.is_connected():
-            # connection.close()
-            print("Connected to MySQL")
-    print("Password not found after maximum attempts")
     return None
+
+
+def close_connection(connection):
+    try:
+        if connection.is_connected():
+            server_info = connection.get_server_info()
+            cursor = connection.cursor()
+            cursor.close()
+            connection.close()
+            print(f"Connected to MySQL Server version {server_info}")
+            return True
+    except Error as e:
+        print(f"Failed to close connection | Error: {e}")
+        return False

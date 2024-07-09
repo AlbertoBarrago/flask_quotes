@@ -9,6 +9,8 @@ def create_app():
     app = Flask(__name__, static_folder='../static')
     app.register_blueprint(route_external)
     app.register_blueprint(route_favicon)
-    connect_mysql()
+    cnx = connect_mysql()
+    if cnx:
+        print(f' 🚀Connected to MySQL {cnx.get_server_info()}')
     return app
 

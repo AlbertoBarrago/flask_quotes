@@ -2,4 +2,5 @@ DB_USER_ROOT=root
 DB_USER=root
 DB_PASSWORD=admin
 DB_HOST=127.0.0.1
-DB_NAME'=localDb
+DB_NAME=
+QUOTE_SERVICE'=https://zenquotes.io/api/quotes
