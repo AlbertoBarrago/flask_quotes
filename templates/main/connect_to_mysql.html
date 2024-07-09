@@ -10,10 +10,10 @@
     <h1>{{ description }}</h1>
 {% endif %}
 {% if isForm %}
-    <p>Insert data for retrieve your Oracle access!</p>
-    <form action="/findDbPassword" method="POST" style="text-align: center;">
+    <p>Connect to mysql!</p>
+    <form action="/connectMySql" method="POST" style="text-align: center;">
         <label for="host">Host <br>
-            <input type="text" value="localhost" name="host" placeholder="host">
+            <input type="text" value="127.0.0.1" name="host" placeholder="host">
         </label> <br><br>
         <label for="user">User: <br>
             <input type="text" value="admin" name="user" placeholder="user">
@@ -22,14 +22,17 @@
             <input type="text" value="localDb" name="database" placeholder="dataBase">
         </label>
         <br><br>
-        <label for="user">PSW Length: <br>
-            <input type="text" value="8" name="passwordLength" placeholder="passwordLength">
+         <label for="password">Password: <br>
+            <input type="text" value="pippo" name="password" placeholder="password">
         </label>
         <br>
         <br>
         <br>
         <button type="submit">find psw</button>
     </form>
+{% endif %}
+{% if success %}
+    Connected with mySql Boss.
 {% endif %}
 {% if error %}
     {{ error }}

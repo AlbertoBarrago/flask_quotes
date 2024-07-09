@@ -1,0 +1,11 @@
+FROM mysql:latest
+LABEL authors="albz"
+
+ENV MYSQL_ROOT_PASSWORD=admin
+ENV MYSQL_USER=albz
+ENV MYSQL_PASSWORD=admin
+ENV MYSQL_DATABASE=localDb
+
+EXPOSE 3306
+
+CMD ["mysqld"]
