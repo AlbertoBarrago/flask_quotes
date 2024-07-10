@@ -1,7 +1,5 @@
 # quote_service.py
 import os
-
-import mysql
 import requests
 
 from service.connect_mysql import connect_mysql
@@ -26,7 +24,7 @@ def save_quote_to_db(quote, author):
         print(e)
 
 
-def get_quotes():
+def get_new_quotes_and_read_first():
     try:
         response = requests.get(os.getenv('QUOTE_SERVICE'))
         data = response.json()
@@ -46,3 +44,20 @@ def get_quotes():
         return None, str(e)
 
 
+def get_all_quotes():
+    try:
+        cnx = connect_mysql()
+        cursor = cnx.cursor(dictionary=True)
+
+        get_quotes = """
+         SELECT author, quote FROM quotes ORDER BY quote DESC
+        """
+        cursor.execute(get_quotes)
+        list_quotes = cursor.fetchall()
+
+        cursor.close()
+        cnx.close()
+
+        return list_quotes
+    except Exception as e:
+        print(e)

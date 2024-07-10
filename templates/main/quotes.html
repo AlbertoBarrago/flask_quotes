@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {%  if title %} <title> {{ title }} </title> {% endif %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            {% if description %}
+                <h1>{{ description }}</h1>
+            {% else %}
+                <h1>Inspirational Quotes</h1>
+            {% endif %}
+            {% if error %}
+                <p class="text-danger">Error: {{ error }}</p>
+            {% endif %}
+        </div>
+
+        {% if quotes %}
+            <div class="row">
+                {% for q in quotes %}
+                <div class="col-md-4">
+                    <div class="card">
+                        <div class="card-header">
+                            {{ q.author.strip() }}
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">{{ q.quote.strip() }}</p>
+                        </div>
+                        <div class="card-footer">
+                            <small class="text-muted">Inspirational Quote</small>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p class="no-quotes">No quotes available.</p>
+        {% endif %}
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

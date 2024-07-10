@@ -1,6 +1,6 @@
 :root {
     --primary-color: #000000;
-    --secondary-color: #c12c2c;
+    --secondary-color: #2cc16d;
     --tertiary-color: #4ee11d;
 }
 
@@ -11,6 +11,7 @@ body {
     font-size: 18px;
     font-weight: 300;
     text-align: center;
+    padding: 5rem;
 }
 
 h1 {
@@ -41,4 +42,33 @@ button {
     border: none;
     border-radius: 2px;
     padding: 10px
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.card {
+    margin: 10px 0;
+}
+
+.card-header {
+    font-weight: bold;
+    background-color: var(--tertiary-color);
+    color: white;
+}
+
+.card-body {
+    background-color: white;
+}
+
+.card-footer {
+    background-color: #f8f9fa;
+}
+
+.no-quotes {
+    text-align: center;
+    color: #888;
+    margin-top: 20px;
 }
